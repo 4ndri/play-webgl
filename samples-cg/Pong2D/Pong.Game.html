@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="../Util/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../Util/gl-matrix.js"></script>
+    <script type="text/javascript" src="../Util/webgl-debug.js"></script>    
+    <script type="text/javascript" src="../Util/webgl.util.js"></script>
+    <script type="text/javascript" src="Pong.Objects.js"></script>
+    <script type="text/javascript" src="Pong.Game.js"></script>
+    <script id="vertexshader" type="x-shader/x-vertex">
+        attribute vec2 aPosition;
+        attribute vec4 aColor;
+        varying vec4 vColor;
+        uniform mat4 uProjection;
+        uniform mat4 uModel;
+        void main () {
+            vec4 position = vec4(aPosition , 0.0 , 1.0);
+            gl_Position =uProjection * uModel * position;
+            vColor=aColor;
+        }
+    </script>
+
+    <script id="fragmentshader" type="x-shader/x-fragment">
+        precision mediump float;
+        uniform vec4 aFragColor;
+        varying vec4 vColor;
+        void main () {
+            gl_FragColor = vColor;
+        }
+    </script>
+</head>
+<body onload="Pong.Onload()">
+    <div>
+        <canvas id="gameCanvas" width="600" height="400" style="background-color:#333;"></canvas>
+    </div>
+    <div>
+        <div>
+            <span>Level: </span>
+            <span id="lblLevel">1</span>
+        </div>
+        <div>
+            <span>Player 1: </span>
+            <span id="lblPoints1">0</span>
+        </div>
+        <div>
+            <span>Computer: </span>
+            <span id="lblPoints2">0</span>
+        </div>
+    </div>
+</body>
+</html>
