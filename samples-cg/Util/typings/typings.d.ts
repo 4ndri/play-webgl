@@ -1,4 +1,4 @@
-﻿/// <reference path="../../scripts/typings/jquery/jquery.d.ts" />
+﻿
 /// <reference path="../webgl.util.ts" />
 interface IWebGLDebugUtils {
     makeDebugContext: (context: any)=>any

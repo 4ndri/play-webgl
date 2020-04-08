@@ -1,0 +1,21 @@
+﻿attribute vec3 aNorms;
+uniform mat3 uNorms;
+
+attribute vec3 aPosition;
+attribute vec3 aColor;
+
+varying vec4 vColor;
+uniform mat4 uProjection;
+uniform mat4 uModel;
+
+uniform vec3 uLightVec;
+uniform vec3 uLightColor;
+void main() {
+	vec4 position = vec4(aPosition, 1.0);
+	gl_Position = uProjection * uModel * position;
+
+	vec3 r = 2.0 * normalize(aNorms)*dot(normalize(aNorms),(-uLightVec)) + uLightVec;
+	float cosA = dot(normalize(r), uNorms * (-aPosition));
+	vec3 col = uLightColor*aColor*cosA;
+	vColor = vec4(col,1.0);
+}

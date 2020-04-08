@@ -1,0 +1,1 @@
+start chrome --disable-web-security --allow-file-access --allow-file-access-from-files --user-data-dir="C:\Prg\ChromeSession" --file "C:\Users\andri\Google Drive\HSLU\CG\VS\VS\Cube\Cube.html"
